@@ -1,0 +1,15 @@
+@import "./sidebar.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .transition-background {@apply transition-all duration-300 ease-in-out}
+
+  .app {
+    @apply flex min-h-screen
+      bg-gray-100
+      transition-background
+      dark:bg-gray-700
+  }
+}
