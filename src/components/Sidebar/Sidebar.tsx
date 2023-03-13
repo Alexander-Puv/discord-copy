@@ -3,16 +3,15 @@ import { BsDiscord, BsGearFill, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { FaCompass } from 'react-icons/fa'
 import useDarkMode from '../../hooks/useDarkMode'
 import SidebarIcon from './SidebarIcon'
-import { useState } from 'react'
 
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
 
   return (
     <div className='sidebar'>
-      <SidebarIcon Icon={BsDiscord} chosen />
-      <SidebarIcon Icon={AiOutlinePlus} />
-      <SidebarIcon Icon={FaCompass} />
+      <SidebarIcon Icon={BsDiscord} text='Direct messages' chosen />
+      <SidebarIcon Icon={AiOutlinePlus} text='Add a server' />
+      <SidebarIcon Icon={FaCompass} text='Explore public servers' />
       <div className='mb-auto' />
       <SidebarIcon
         onClick={() => setDarkTheme(!darkTheme)}
@@ -20,8 +19,9 @@ const Sidebar = () => {
           BsMoonFill
         : BsSunFill
         }
+        text='Change theme'
       />
-      <SidebarIcon Icon={BsGearFill} />
+      <SidebarIcon Icon={BsGearFill} text='User settings' />
     </div>
   )
 }

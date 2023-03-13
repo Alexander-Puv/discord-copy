@@ -3,7 +3,7 @@ import { FaCompass } from 'react-icons/fa'
 
 interface SidebarIconProps {
   Icon: typeof FaCompass,
-  text?: string,
+  text: string,
   onClick?: Function,
   chosen?: boolean
 }
@@ -24,9 +24,9 @@ const SidebarIcon = ({Icon, text, onClick, chosen}: SidebarIconProps) => {
     <div className={`sidebar-icon group${isChosen ? ' chosen' : ''}`} onClick={clickHandle}>
       <Icon />
       <span className='sidebar-tooltip group-hover:scale-100'>
-        {text ?? 'Tooltip'}
+        {text}
       </span>
-      {/* <span className="sidebar-chosen" /> */}
+      <span className="sidebar-bar"></span>
     </div>
   )
 }

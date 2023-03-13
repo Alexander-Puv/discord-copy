@@ -32,24 +32,25 @@
       dark:text-white;
   }
 
-  /* .sidebar-icon::before {
-    @apply absolute 
-  } */
-
-  .sidebar-icon.chosen::before {
-    @apply absolute left-[-8px] /* (64 - 48) / 2 */
-      h-10 w-1
-      bg-white
-      rounded-r-xl
-      content-['']
-  }
-
   .sidebar-tooltip {
     @apply absolute w-auto p-2 m-2 min-w-max left-14
       rounded-md shadow-md
       bg-gray-300 text-gray-900
-      text-xs font-bold
+      text-sm font-semibold
       transition-all duration-100 scale-0 origin-left
       dark:text-white dark:bg-gray-900
+  }
+
+  .sidebar-bar {
+    @apply absolute left-[-8px] /* (64 - 48) / 2 */
+      h-0 w-0
+      bg-black rounded-r-xl
+      transition-all duration-100
+      group-hover:h-5 group-hover:w-1
+      dark:bg-white
+  }
+
+  .sidebar-icon.chosen .sidebar-bar {
+    @apply h-10 w-1
   }
 }
