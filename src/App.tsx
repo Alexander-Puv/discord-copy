@@ -1,11 +1,14 @@
 import Sidebar from "./components/Sidebar/Sidebar"
+import AppContextProvider from "./contexts/AppContext"
 
 function App() {
 
   return (
-    <div className="app">
-      <Sidebar />
-    </div>
+    <AppContextProvider>
+      <div className="app">
+        <Sidebar />
+      </div>
+    </AppContextProvider>
   )
 }
 

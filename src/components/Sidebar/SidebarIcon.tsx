@@ -1,30 +1,29 @@
 import { useState } from "react"
-import { FaCompass } from 'react-icons/fa'
+import { IconType } from "react-icons/lib"
 
-interface SidebarIconProps {
-  Icon: typeof FaCompass,
-  text: string,
+export enum SidebarIconNames {
+  discord = 'Discord',
+  plus = 'Plus',
+  compass = 'Compass',
+  theme = 'Theme',
+  settings = 'Settings'
+}
+
+export interface SidebarIconProps {
+  name: string,
+  Icon: IconType,
+  text?: string,
   onClick?: Function,
   chosen?: boolean
 }
 
-const SidebarIcon = ({Icon, text, onClick, chosen}: SidebarIconProps) => {
-  const [isChosen, setIsChosen] = useState(chosen ?? false)
-
-  const clickHandle = () => {
-    if (onClick) {
-      // for now only dark theme change has it's own onClick but it doesn't need to be chosen
-      onClick()
-    } else {
-      // setIsChosen(isChosen ? false : true)
-    }
-  }
+const SidebarIcon = ({name, Icon, text, onClick, chosen}: SidebarIconProps) => {
 
   return (
-    <div className={`sidebar-icon group${isChosen ? ' chosen' : ''}`} onClick={clickHandle}>
+    <div className={`sidebar-icon group${chosen ? ' chosen' : ''}`} onClick={() => onClick && onClick()}>
       <Icon />
       <span className='sidebar-tooltip group-hover:scale-100'>
-        {text}
+        {text ?? name}
       </span>
       <span className="sidebar-bar"></span>
     </div>
