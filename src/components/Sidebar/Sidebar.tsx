@@ -28,7 +28,11 @@ const Sidebar = () => {
         <SidebarIcon
           {...icon} chosen={chosen === icon.name}
           onClick={() => icon.onClick ? icon.onClick() : setChosen(icon.name)}
+          // if there is onClick it can't be chosen
         />
+        {icon.name == SidebarIconNames.discord && <>
+          <span className="dividing-line"></span>
+        </>}
       </React.Fragment>)}
     </div>
   )

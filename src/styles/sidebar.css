@@ -13,24 +13,37 @@
       dark:bg-gray-900 dark:text-white
   }
 
+
+
   .sidebar-icon {
     @apply relative flex items-center justify-center
       h-12 w-12 my-2 mx-auto
       text-lg
-      bg-gray-200 text-green-600
-      hover:bg-green-600 hover:text-gray-200
+      bg-gray-200 text-gray-800
+      hover:bg-brand hover:text-gray-200
       rounded-3xl hover:rounded-xl
       cursor-pointer
       transition-all ease-linear
-      dark:bg-gray-800 dark:hover:text-white
-      dark:hover:bg-green-600;
+      dark:bg-gray-800 dark:text-white
+      dark:hover:bg-brand;
+  }
+
+  .sidebar-icon.green {
+    @apply text-green-600 hover:text-gray-200
+      hover:bg-green-600 dark:hover:bg-green-600
   }
 
   .sidebar-icon.chosen {
-    @apply bg-green-600 text-gray-200
+    @apply bg-brand text-gray-200
       rounded-xl
       dark:text-white;
   }
+
+  .sidebar-icon.chosen.green {
+    @apply bg-green-600
+  }
+
+
 
   .sidebar-tooltip {
     @apply absolute w-auto p-2 m-2 min-w-max left-14
@@ -40,6 +53,8 @@
       transition-all duration-100 scale-0 origin-left
       dark:text-white dark:bg-gray-900
   }
+
+
 
   .sidebar-bar {
     @apply absolute left-[-8px] /* (64 - 48) / 2 */
@@ -52,5 +67,13 @@
 
   .sidebar-icon.chosen .sidebar-bar {
     @apply h-10 w-1
+  }
+
+
+
+  .sidebar .dividing-line {
+    @apply self-center h-[2px] w-8
+      bg-gray-400 dark:bg-gray-800
+      transition-all ease-linear
   }
 }
