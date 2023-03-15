@@ -23,9 +23,9 @@ const SidebarIcon = ({name, Icon, text, onClick, chosen}: SidebarIconProps) => {
   return (
     <div
       className={'sidebar-icon group' +
-      (chosen ? ' chosen' : '') +
-      (greenColor ? ' green' : '') +
-      (name === SidebarIconNames.discord ? ' text-2xl' : '')}
+        (chosen ? ' chosen' : '') +
+        (greenColor ? ' green' : '') +
+        (name === SidebarIconNames.discord ? ' text-2xl' : '')}
       onClick={() => onClick && onClick()}
     >
       <Icon />
