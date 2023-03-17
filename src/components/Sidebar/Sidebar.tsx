@@ -4,15 +4,13 @@ import { BsDiscord, BsGearFill, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { FaCompass } from 'react-icons/fa'
 import useDarkMode from '../../hooks/useDarkMode'
 import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
-import { AppContext } from '../../contexts/AppContext'
+import { useAppContext } from '../../contexts/AppContext'
 import Popup from '../UI/Popup/Popup'
 
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
   const [isOpen, setIsOpen] = useState(false)
-  const appContext = useContext(AppContext)
-  if (!appContext) return <></>
-  const {chosen, setChosen} = appContext
+  const {chosen, setChosen} = useAppContext()
 
   const SidebarIcons: SidebarIconProps[] = [
     {name: SidebarIconNames.discord, Icon: BsDiscord, text: 'Direct messages'},
@@ -37,11 +35,12 @@ const Sidebar = () => {
           <span className="dividing-line"></span>
         </>}
       </React.Fragment>)}
-      <Popup {...{isOpen, setIsOpen}} popupContent={{
+      {/* <Popup {...{isOpen, setIsOpen}} popupContent={{
         title: 'Create a server',
-        content: 'Your server is where you and your friends hang out. Make yours and start talking.',
+        subtitle: 'Your server is where you and your friends hang out. Make yours and start talking.',
+        content: [<Popup.Block title='aaaaaaaaa' />],
         close: {text: 'Close'}
-      }} />
+      }} /> */}
     </div>
   )
 }
