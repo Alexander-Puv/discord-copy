@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useLocalStorage = (key, initialValue) => {
+type setValue = (value: Function | boolean) => void
+
+type useLocalStorageType = (key: string, initialValue?: boolean) => [boolean, setValue]
+type useDarkModeType = () => [boolean, setValue]
+
+const useLocalStorage: useLocalStorageType = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -11,7 +16,7 @@ const useLocalStorage = (key, initialValue) => {
     }
   });
 
-  const setValue = (value) => {
+  const setValue: setValue = (value) => {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
 
@@ -25,16 +30,15 @@ const useLocalStorage = (key, initialValue) => {
   return [storedValue, setValue];
 };
 
-const useDarkMode = () => {
+const useDarkMode: useDarkModeType = () => {
   const [enabled, setEnabled] = useLocalStorage('dark-theme');
-  const isEnabled = typeof enabledState === 'undefined' && enabled;
 
   useEffect(() => {
     const className = 'dark';
     const bodyClass = window.document.body.classList;
 
-    isEnabled ? bodyClass.add(className) : bodyClass.remove(className);
-  }, [enabled, isEnabled]);
+    enabled ? bodyClass.add(className) : bodyClass.remove(className);
+  }, [enabled]);
 
   return [enabled, setEnabled];
 };
