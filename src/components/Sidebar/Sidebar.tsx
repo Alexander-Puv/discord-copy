@@ -6,6 +6,8 @@ import useDarkMode from '../../hooks/useDarkMode'
 import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
 import { useAppContext } from '../../contexts/AppContext'
 import Popup from '../UI/Popup/Popup'
+import RadioGroup, { RadioOption } from '../UI/RadioGroup'
+import {BiHash} from 'react-icons/bi'
 
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
@@ -35,12 +37,32 @@ const Sidebar = () => {
           <span className="dividing-line"></span>
         </>}
       </React.Fragment>)}
-      {/* <Popup {...{isOpen, setIsOpen}} popupContent={{
+      <Popup {...{isOpen, setIsOpen}} popupContent={{
         title: 'Create a server',
         subtitle: 'Your server is where you and your friends hang out. Make yours and start talking.',
-        content: [<Popup.Block title='aaaaaaaaa' />],
         close: {text: 'Close'}
-      }} /> */}
+      }}>
+        <Popup.Block title='check'>
+        <RadioGroup>
+          <RadioOption
+            title="Option 1"
+            subtitle="Description of option 1"
+            icon={<BiHash />}
+            value="option1"
+            defaultValue
+          />
+          <RadioOption
+            title="Option 2"
+            subtitle="Description of option 2"
+            icon={<BiHash />}
+            value="option2"
+          />
+        </RadioGroup>
+        </Popup.Block>
+        <Popup.Block title='check'>
+          
+        </Popup.Block>
+      </Popup>
     </div>
   )
 }

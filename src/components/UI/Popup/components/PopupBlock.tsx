@@ -1,11 +1,19 @@
-import React from 'react'
+import { ReactNode } from "react"
 
-const Block = () => {
+interface PopupBlockProps {
+  title: string,
+  children?: ReactNode
+}
+
+const PopupBlock = ({title, children}: PopupBlockProps) => {
   return (
-    <div>
-      
+    <div className="mb-5">
+      <h3 className="mb-2 second-title">
+        {title.toUpperCase()}
+      </h3>
+      {children}
     </div>
   )
 }
 
-export default Block
+export default PopupBlock
