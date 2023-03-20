@@ -23,19 +23,23 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
     <label
       className={`flex items-center
         py-[10px] px-3 mb-2 rounded-[3px]
-        cursor-pointer transition-all ease-linear ${
-          isSelected ? 'bg-gray-600 bg-opacity-60 text-gray-300'
-            : `bg-gray-800 text-gray-500
-              hover:bg-gray-600 hover:bg-opacity-30 hover:text-gray-300
-              active:bg-opacity-[0.48]`
+        cursor-pointer ${
+          isSelected ? `bg-gray-600 bg-opacity-[0.17]
+          dark:bg-opacity-60 dark:text-gray-300`
+            : `bg-gray-100 text-gray-600
+              hover:bg-gray-600 hover:bg-opacity-[0.12] hover:text-gray-700
+              active:bg-opacity-[0.15]
+              dark:bg-gray-800 dark:text-gray-500
+              dark:hover:bg-gray-600 dark:hover:bg-opacity-30 dark:hover:text-gray-300
+              dark:active:bg-opacity-[0.48]`
         }`}
     >
       <div className='radio-group-icon w-[18px] h-[18px]'>
         {icon}
       </div>
       <div className="ml-3 mr-2 flex-1">
-        <div className="text-base font-medium">{title}</div>
-        {subtitle && <div className="text-gray-500 text-sm mt-1">{subtitle}</div>}
+        <div className="text-gray-700 dark:text-gray-400 text-base font-medium">{title}</div>
+        {subtitle && <div className="text-sm mt-1">{subtitle}</div>}
       </div>
       <div className='radio-group-icon'>
         {isSelected ? <BiRadioCircleMarked /> : <BiRadioCircle />}

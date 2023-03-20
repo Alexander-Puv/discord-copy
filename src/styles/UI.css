@@ -19,6 +19,5 @@
   /* RadioGroup */
   .radio-group-icon svg {
     @apply flex w-6 h-6 max-w-full max-h-full
-      opacity-60 fill-gray-300
   }
 }
