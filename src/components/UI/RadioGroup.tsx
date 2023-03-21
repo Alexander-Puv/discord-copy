@@ -20,7 +20,7 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
   }, [])
 
   return (
-    <label
+    <div
       className={`flex items-center
         py-[10px] px-3 mb-2 rounded-[3px]
         cursor-pointer ${
@@ -33,6 +33,7 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
               dark:hover:bg-gray-600 dark:hover:bg-opacity-30 dark:hover:text-gray-300
               dark:active:bg-opacity-[0.48]`
         }`}
+      onClick={() => setSelected(value)}
     >
       <div className='radio-group-icon w-[18px] h-[18px]'>
         {icon}
@@ -44,13 +45,7 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
       <div className='radio-group-icon'>
         {isSelected ? <BiRadioCircleMarked /> : <BiRadioCircle />}
       </div>
-      <input
-        type="radio"
-        className="hidden"
-        checked={isSelected}
-        onChange={() => setSelected(value)}
-      />
-    </label>
+    </div>
   );
 };
 
