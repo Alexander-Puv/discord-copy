@@ -14,6 +14,7 @@ module.exports = {
         brand: '#5865f2',
         gray: colors.neutral,
         gray: {
+          950: '#1e1f22',
           900: '#202225',
           800: '#2f3136',
           700: '#36393f',

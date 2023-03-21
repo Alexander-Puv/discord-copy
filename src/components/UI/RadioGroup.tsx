@@ -35,14 +35,14 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
         }`}
       onClick={() => setSelected(value)}
     >
-      <div className='radio-group-icon w-[18px] h-[18px]'>
+      <div className='icon-parent w-[18px] h-[18px]'>
         {icon}
       </div>
       <div className="ml-3 mr-2 flex-1">
         <h3 className="h3">{title}</h3>
         {subtitle && <div className="text-sm mt-1">{subtitle}</div>}
       </div>
-      <div className='radio-group-icon'>
+      <div className='icon-parent'>
         {isSelected ? <BiRadioCircleMarked /> : <BiRadioCircle />}
       </div>
     </div>

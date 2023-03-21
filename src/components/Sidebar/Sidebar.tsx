@@ -12,6 +12,7 @@ import {BiHash} from 'react-icons/bi'
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
   const [isOpen, setIsOpen] = useState(false)
+  const [value, setValue] = useState('')
   const {chosen, setChosen} = useAppContext()
 
   const SidebarIcons: SidebarIconProps[] = [
@@ -42,25 +43,26 @@ const Sidebar = () => {
         subtitle: 'Your server is where you and your friends hang out. Make yours and start talking.',
         close: {text: 'Close'}
       }}>
-        <Popup.Block title='check'>
-        <RadioGroup>
-          <RadioOption
-            title="Option 1"
-            subtitle="Description of option 1"
-            icon={<BiHash />}
-            value="option1"
-            defaultValue
-          />
-          <RadioOption
-            title="Option 2"
-            subtitle="Description of option 2"
-            icon={<BiHash />}
-            value="option2"
-          />
-        </RadioGroup>
+        <Popup.Block title='check1'>
+          <RadioGroup>
+            <RadioOption
+              title="Option 1"
+              subtitle="Description of option 1"
+              icon={<BiHash />}
+              value="option1"
+              defaultValue
+            />
+            <RadioOption
+              title="Option 2"
+              subtitle="Description of option 2"
+              icon={<BiHash />}
+              value="option2"
+            />
+          </RadioGroup>
         </Popup.Block>
-        <Popup.Block title='check'>
-          
+        <Popup.Block title='check2'>
+          <Popup.Input icon={<BiHash />} placeholder='Check'
+          {...{value, setValue}}/>
         </Popup.Block>
       </Popup>
     </div>

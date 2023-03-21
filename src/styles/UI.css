@@ -10,10 +10,4 @@
       px-4 py-[2px]
       text-sm font-medium
   }
-
-
-  /* RadioGroup */
-  .radio-group-icon svg {
-    @apply w-6 h-6 max-w-full max-h-full
-  }
 }
