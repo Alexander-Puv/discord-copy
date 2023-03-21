@@ -4,10 +4,6 @@
 
 @layer components {
   /* Popup */
-  .second-title {
-    @apply text-xs text-gray-600 dark:text-gray-500
-  }
-
   .popup-button {
     @apply min-w-[96px] min-h-[38px]
       inline-flex justify-center items-center
@@ -18,6 +14,6 @@
 
   /* RadioGroup */
   .radio-group-icon svg {
-    @apply flex w-6 h-6 max-w-full max-h-full
+    @apply w-6 h-6 max-w-full max-h-full
   }
 }

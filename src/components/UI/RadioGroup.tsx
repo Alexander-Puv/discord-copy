@@ -39,7 +39,7 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
         {icon}
       </div>
       <div className="ml-3 mr-2 flex-1">
-        <div className="text-gray-700 dark:text-gray-400 text-base font-medium">{title}</div>
+        <h3 className="h3">{title}</h3>
         {subtitle && <div className="text-sm mt-1">{subtitle}</div>}
       </div>
       <div className='radio-group-icon'>

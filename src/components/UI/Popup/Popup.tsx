@@ -1,5 +1,6 @@
 import PopupBlock from "./components/PopupBlock"
 import { ReactNode } from 'react'
+import PopupInput from "./components/PopupInput"
 
 interface PopupContentProps {
   title: string,
@@ -32,12 +33,12 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
           dark:bg-gray-700"
         >
           <div className="p-4">
-            <h2 className="text-xl leading-6 font-medium text-gray-900 dark:text-gray-100">
+            <h2 className="h2">
               {title}
             </h2>
-            <h3 className="second-title">
+            <h4 className="h4">
               {subtitle}
-            </h3>
+            </h4>
           </div>
           <div className="flex flex-col px-4">
             {children}
@@ -71,5 +72,6 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
 }
 
 Popup.Block = PopupBlock
+Popup.Input = PopupInput
 
 export default Popup

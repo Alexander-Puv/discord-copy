@@ -8,9 +8,9 @@ interface PopupBlockProps {
 const PopupBlock = ({title, children}: PopupBlockProps) => {
   return (
     <div className="mb-5">
-      <h3 className="mb-2 second-title">
+      <h4 className="mb-2 h4">
         {title.toUpperCase()}
-      </h3>
+      </h4>
       {children}
     </div>
   )
