@@ -1,6 +1,7 @@
 import PopupBlock from "./components/PopupBlock"
 import { ReactNode } from 'react'
 import PopupInput from "./components/PopupInput"
+import { VscClose } from 'react-icons/vsc'
 
 interface PopupContentProps {
   title: string,
@@ -27,11 +28,16 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
           <div className="absolute inset-0 bg-black opacity-75" />
         </div>
         <span className="inline-block align-middle h-screen" />
-        <div className="inline-block align-middle max-w-[460px] w-full
+        <div className="relative inline-block align-middle max-w-[460px] w-full
           bg-white rounded-xl shadow-xl overflow-hidden text-left
           transform transition-all
           dark:bg-gray-700"
         >
+          <div className="absolute top-3 right-3 p-1 icon-parent opacity-50
+            cursor-pointer transition-all ease-linear hover:opacity-100"
+            onClick={() => setIsOpen(false)}>
+            <VscClose />
+          </div>
           <div className="p-4">
             <h2 className="h2">
               {title}

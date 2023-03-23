@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsDiscord, BsGearFill, BsMoonFill, BsSunFill } from 'react-icons/bs'
 import { FaCompass } from 'react-icons/fa'
-import useDarkMode from '../../hooks/useDarkMode'
-import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
 import { useAppContext } from '../../contexts/AppContext'
+import useDarkMode from '../../hooks/useDarkMode'
 import Popup from '../UI/Popup/Popup'
-import RadioGroup, { RadioOption } from '../UI/RadioGroup'
-import {BiHash} from 'react-icons/bi'
+import UploadPhoto from '../UI/UploadPhoto'
+import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
 
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
@@ -25,6 +24,12 @@ const Sidebar = () => {
     {name: SidebarIconNames.settings, Icon: BsGearFill, text: 'User settings'},
   ]
 
+  const PopupOnClick = () => {
+    setTimeout(() => {
+      setValue('');
+    }, 150)
+  }
+
   return (
     <div className='sidebar'>
       {SidebarIcons.map((icon, index) => <React.Fragment key={index}>
@@ -41,28 +46,14 @@ const Sidebar = () => {
       <Popup {...{isOpen, setIsOpen}} popupContent={{
         title: 'Create a server',
         subtitle: 'Your server is where you and your friends hang out. Make yours and start talking.',
-        close: {text: 'Close'}
+        close: {text: 'Create', disabled: !value, onClick: PopupOnClick}
       }}>
-        <Popup.Block title='check1'>
-          <RadioGroup>
-            <RadioOption
-              title="Option 1"
-              subtitle="Description of option 1"
-              icon={<BiHash />}
-              value="option1"
-              defaultValue
-            />
-            <RadioOption
-              title="Option 2"
-              subtitle="Description of option 2"
-              icon={<BiHash />}
-              value="option2"
-            />
-          </RadioGroup>
-        </Popup.Block>
-        <Popup.Block title='check2'>
-          <Popup.Input icon={<BiHash />} placeholder='Check'
-          {...{value, setValue}}/>
+        <div className='flex justify-center mb-6 mt-5'>
+          <UploadPhoto isOpen={isOpen} />
+        </div>
+        <Popup.Block title='Server name'>
+          <Popup.Input {...{value, setValue}} />
+          <h4 className='h4 mt-2 pb-1'>By creating a server, you agree to agree (by the way, the button below doesn't create server, this is not a bug)</h4>
         </Popup.Block>
       </Popup>
     </div>

@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BsFillCameraFill, BsPlus } from 'react-icons/bs';
 
-interface UploadPhotoProps {
-  storageName: string
-}
-
-const UploadPhoto = ({storageName}: UploadPhotoProps) => {
+const UploadPhoto = ({isOpen}: {isOpen: boolean}) => {
   const [image, setImage] = useState<string | null>(null);
+  const uploadedImage = 'uploadedImage'
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setImage(null)
+        localStorage.removeItem(uploadedImage)
+      }, 150)
+    }
+  }, [isOpen])
   
 
   const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
@@ -16,7 +22,7 @@ const UploadPhoto = ({storageName}: UploadPhotoProps) => {
 
     reader.onload = () => {
       setImage(reader.result as string)
-      localStorage.setItem(`${storageName}Image`, reader.result as string)
+      localStorage.setItem(uploadedImage, reader.result as string)
     };
 
     reader.readAsDataURL(file)
@@ -28,7 +34,7 @@ const UploadPhoto = ({storageName}: UploadPhotoProps) => {
 
     reader.onload = () => {
       setImage(reader.result as string);
-      localStorage.setItem(`${storageName}Image`, reader.result as string)
+      localStorage.setItem(uploadedImage, reader.result as string)
     }
 
     reader.readAsDataURL(file)
