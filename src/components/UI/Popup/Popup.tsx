@@ -1,7 +1,7 @@
-import PopupBlock from "./components/PopupBlock"
-import { ReactNode } from 'react'
-import PopupInput from "./components/PopupInput"
+import { ReactNode, useEffect, useState } from 'react'
 import { VscClose } from 'react-icons/vsc'
+import PopupBlock from "./components/PopupBlock"
+import PopupInput from "./components/PopupInput"
 
 interface PopupContentProps {
   title: string,
@@ -21,6 +21,18 @@ interface PopupProps {
 }
 
 const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtitle}}: PopupProps) => {
+  const [open, setOpen] = useState(isOpen)
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setOpen(isOpen)
+      }, 150);
+    }
+    else setOpen(isOpen)
+  }, [isOpen])
+  
+
   return <>
     <div className={`fixed inset-0 overflow-y-auto ${isOpen ? 'opacity-100 z-10' : 'opacity-0 -z-10'} transition-all ease-linear`}>
       <div className="block min-h-screen text-center p-0">
@@ -28,6 +40,7 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
           <div className="absolute inset-0 bg-black opacity-75" />
         </div>
         <span className="inline-block align-middle h-screen" />
+        {open &&
         <div className="relative inline-block align-middle max-w-[460px] w-full
           bg-white rounded-xl shadow-xl overflow-hidden text-left
           transform transition-all
@@ -71,7 +84,7 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
               </button>
             </div>
           }
-        </div>
+        </div>}
       </div>
     </div>
   </>
