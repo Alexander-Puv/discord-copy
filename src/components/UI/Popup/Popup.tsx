@@ -33,7 +33,7 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
   }, [isOpen])
   
 
-  return <div className={`fixed overflow-y-auto${open ? ' inset-0' : ''}`}>
+  return <div className={`fixed overflow-y-auto${open ? ' inset-0' : ''} z-50`}>
     <div className={`${isOpen ? 'opacity-100 z-10' : 'opacity-0 -z-10'} transition-all ease-linear`}>
       <div className="block min-h-screen text-center p-0">
         {open && <>
@@ -46,7 +46,7 @@ const Popup = ({isOpen, setIsOpen, children, popupContent: {close, title, subtit
             transform transition-all
             dark:bg-gray-700"
           >
-            <div className="absolute top-3 right-3 p-1 icon-parent opacity-50
+            <div className="absolute top-3 right-3 p-1 icon-parent text-secondary opacity-50
               cursor-pointer transition-all ease-linear hover:opacity-100"
               onClick={() => setIsOpen(false)}>
               <VscClose />

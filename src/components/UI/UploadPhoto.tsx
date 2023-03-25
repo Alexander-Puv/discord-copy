@@ -47,8 +47,8 @@ const UploadPhoto = ({isOpen}: {isOpen: boolean}) => {
   return (
     <label className={`relative w-20 h-20 flex flex-col items-center justify-center
       ${!image ? 'border-2 border-dashed border-gray-600' : ''} rounded-full
-      text-gray-600 cursor-pointer
-      dark:border-gray-500 dark:text-gray-500`}
+      text-secondary cursor-pointer
+      dark:border-gray-500`}
       onDrop={handleDrop} onDragOver={handleDragOver}>
       {image ? <img src={image} className='w-full h-full object-cover rounded-full' />
       : <>

@@ -26,11 +26,11 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
         cursor-pointer ${
           isSelected ? `bg-gray-600 bg-opacity-[0.17]
           dark:bg-opacity-60 dark:text-gray-300`
-            : `bg-gray-100 text-gray-600
+            : `bg-gray-100 text-secondary
               hover:bg-gray-600 hover:bg-opacity-[0.12] hover:text-gray-700
               active:bg-opacity-[0.15]
-              dark:bg-gray-800 dark:text-gray-500
-              dark:hover:bg-gray-600 dark:hover:bg-opacity-30 dark:hover:text-gray-300
+              dark:bg-gray-800 dark:hover:text-gray-300
+              dark:hover:bg-gray-600 dark:hover:bg-opacity-30 
               dark:active:bg-opacity-[0.48]`
         }`}
       onClick={() => setSelected(value)}
@@ -40,7 +40,7 @@ export const RadioOption = ({value, title, subtitle, icon, defaultValue}: RadioO
       </div>
       <div className="ml-3 mr-2 flex-1">
         <h3 className="h3">{title}</h3>
-        {subtitle && <div className="text-sm mt-1">{subtitle}</div>}
+        {subtitle && <div className="text-sm mt-1 text-secondary">{subtitle}</div>}
       </div>
       <div className='icon-parent'>
         {isSelected ? <BiRadioCircleMarked /> : <BiRadioCircle />}
