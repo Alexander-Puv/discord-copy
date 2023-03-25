@@ -5,23 +5,36 @@
 @tailwind utilities;
 
 @layer components {
-  .transition-background {@apply transition-all duration-300 ease-in-out}
+  ul, li {@apply list-none}
+
 
   .text-normal {@apply text-gray-700 dark:text-gray-400}
 
   .h2 {@apply text-xl leading-6 font-medium text-gray-900 dark:text-gray-100}
+  
   .h3 {@apply text-normal text-base font-medium}
+
   .h4 {@apply text-xs text-gray-600 dark:text-gray-500}
+  .h4-hover:hover {@apply text-gray-800 dark:text-gray-300}
+  .h4-chosen {@apply font-medium text-black text-opacity-90 dark:text-gray-100}
+
 
   .icon-parent svg {
     @apply w-6 h-6 max-w-full max-h-full
   }
+  
+
+  .transition-background {@apply transition-all duration-300 ease-in-out}
+
 
   .app {
-    @apply flex min-h-screen
+    @apply flex min-h-screen pl-16
       bg-gray-100
       select-none
       transition-background
       dark:bg-gray-700
   }
+
+  
+  .header-shadow {box-shadow: 0 1px 0 #02020233, 0 1.5px 0 #0606070d, 0 2px 0 #0202020d}
 }
