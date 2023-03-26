@@ -29,6 +29,13 @@ module.exports = {
           800: '#3c45a5',
           700: '#4752c4',
           600: '#5865f2'
+        },
+        icons: {
+          red: '#ed4245',
+          gray: '#757e8a',
+          blue: '#5865f2',
+          green: '#3ba55c',
+          yellow: '#faa61a'
         }
       }
     },

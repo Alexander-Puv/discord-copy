@@ -7,13 +7,14 @@ import { HiHashtag } from 'react-icons/hi'
 import { HiSpeakerWave } from 'react-icons/hi2'
 import { useChannelSidebarContext } from '../../contexts/ChannelSidebarContext'
 import { useState } from 'react'
+import UserArea from './components/UserArea'
 
 const ChannelsSidebar = () => {
   const [value, setValue] = useState('')
   const {chosenChnl, setChosenChnl, isPopupOpen, setIsPopupOpen, popupTitle} = useChannelSidebarContext()
 
   return <>
-    <div className='w-60 h-full bg-gray-100 dark:bg-gray-800 transition-background'>
+    <div className='flex flex-col w-60 h-full bg-gray-100 dark:bg-gray-800 transition-background'>
       <nav>
         <header className='flex h-12 py-3 px-4 header-shadow cursor-pointer'>
           <h2 className='h2 text-base flex-1'>New Chat</h2>
@@ -25,6 +26,7 @@ const ChannelsSidebar = () => {
           )}
         </ul>
       </nav>
+      <UserArea />
     </div>
     <Popup isOpen={isPopupOpen} setIsOpen={setIsPopupOpen}
       popupContent={{title: 'Create Channel', subtitle: `in ${popupTitle}`,
