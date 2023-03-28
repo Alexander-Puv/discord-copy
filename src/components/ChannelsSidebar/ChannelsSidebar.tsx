@@ -11,7 +11,7 @@ import UserArea from './components/UserArea'
 
 const ChannelsSidebar = () => {
   const [value, setValue] = useState('')
-  const {chosenChnl, setChosenChnl, isPopupOpen, setIsPopupOpen, popupTitle} = useChannelSidebarContext()
+  const {isPopupOpen, setIsPopupOpen, popupTitle} = useChannelSidebarContext()
 
   return <>
     <div className='flex flex-col w-60 h-full bg-gray-100 dark:bg-gray-800 transition-background'>
@@ -22,7 +22,7 @@ const ChannelsSidebar = () => {
         </header>
         <ul className='pr-2'>
           {categories.map(category =>
-            <Category {...{category, chosenChnl, setChosenChnl}} key={category.title} />
+            <Category {...{category}} key={category.title} />
           )}
         </ul>
       </nav>

@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState } from 'react'
-import { SidebarIconNames } from '../components/Sidebar/SidebarIcon'
 import { defaultChannel } from '../components/ChannelsSidebar/utils/categories'
+import { IChannel } from '../components/ChannelsSidebar/types/categoriesTypes'
 
 interface ChannelSidebarProps {
-  chosenChnl: string,
-  setChosenChnl: (prop: string) => void,
+  chosenChnl: IChannel,
+  setChosenChnl: (prop: IChannel) => void,
   isPopupOpen: boolean,
   setIsPopupOpen: (prop: boolean) => void,
   popupTitle: string,
@@ -24,7 +24,7 @@ export const useChannelSidebarContext = () => {
 }
 
 const ChannelSidebarContext = ({children}: {children: React.ReactNode}) => {
-  const [chosenChnl, setChosenChnl] = useState(defaultChannel)
+  const [chosenChnl, setChosenChnl] = useState<IChannel>({...defaultChannel})
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [popupTitle, setPopupTitle] = useState('')
 

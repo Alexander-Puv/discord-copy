@@ -13,8 +13,8 @@ function App() {
         <div className="flex flex-1">
           <ChannelSidebarContext>
             <ChannelsSidebar />
+            <Chat />
           </ChannelSidebarContext>
-          <Chat />
         </div>
       </div>
     </AppContextProvider>

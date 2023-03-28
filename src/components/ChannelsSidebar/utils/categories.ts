@@ -24,4 +24,4 @@ export const categories: ICategory[] = [
   }
 ]
 
-export const defaultChannel = categories[0].channels[0].title
+export const defaultChannel = categories[0].channels[0]

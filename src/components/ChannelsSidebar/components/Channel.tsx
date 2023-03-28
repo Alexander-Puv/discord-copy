@@ -12,10 +12,10 @@ const Channel = ({channel, isOpen}: ChannelProps) => {
   const {chosenChnl, setChosenChnl} = useChannelSidebarContext()
 
   return (
-    <li onClick={() => setChosenChnl(channel.title)}
+    <li onClick={() => setChosenChnl({title: channel.title, type: channel.type})}
       className={`flex ml-2 py-[7px] px-2 rounded
         h4 text-base leading-5 cursor-pointer ${
-          chosenChnl === channel.title ?
+          chosenChnl.title === channel.title ?
             'h4-chosen bg-gray-500 bg-opacity-[0.45] dark:bg-gray-600 dark:bg-opacity-[0.55]'
           : `h4-hover hover:bg-gray-500 hover:bg-opacity-30
             active:bg-gray-500 active:bg-opacity-40
