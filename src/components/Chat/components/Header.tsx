@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <header className="h-12 w-full min-w-0 flex items-center px-2 h3 chat-header-shadow">
+    <header className="h-12 w-full min-w-0 flex items-center px-2 h3 chat-header-shadow dark:header-shadow">
       <div className="flex-1 flex items-center">
         <div className="icon-parent mx-2 text-secondary">
           {chosenChnl.type === 'text' ? <HiHashtag /> : <HiSpeakerWave />}
