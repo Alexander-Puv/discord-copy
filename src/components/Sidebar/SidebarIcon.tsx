@@ -1,4 +1,4 @@
-import { IconType } from "react-icons/lib"
+import React from "react"
 
 export enum SidebarIconNames {
   discord = 'Discord',
@@ -10,7 +10,7 @@ export enum SidebarIconNames {
 
 export interface SidebarIconProps {
   name: SidebarIconNames | string,
-  Icon: IconType,
+  Icon: React.ReactNode,
   text?: string,
   onClick?: Function,
   chosen?: boolean
@@ -28,7 +28,7 @@ const SidebarIcon = ({name, Icon, text, onClick, chosen}: SidebarIconProps) => {
         (name === SidebarIconNames.discord ? ' text-2xl' : '')}
       onClick={() => onClick && onClick()}
     >
-      <Icon />
+      {Icon}
       <span className='sidebar-tooltip group-hover:scale-100'>
         {text ?? name}
       </span>

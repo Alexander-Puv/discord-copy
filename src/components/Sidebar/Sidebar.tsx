@@ -8,6 +8,8 @@ import Popup from '../UI/Popup/Popup'
 import UploadPhoto from '../UI/UploadPhoto'
 import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
 
+const Servers = ['New Server']
+
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
   const [isOpen, setIsOpen] = useState(false)
@@ -15,13 +17,13 @@ const Sidebar = () => {
   const {chosen, setChosen} = useAppContext()
 
   const SidebarIcons: SidebarIconProps[] = [
-    {name: SidebarIconNames.discord, Icon: BsDiscord, text: 'Direct messages'},
-    {name: SidebarIconNames.plus, Icon: AiOutlinePlus, text: 'Add a server',
+    {name: SidebarIconNames.discord, Icon: <BsDiscord />, text: 'Direct messages'},
+    {name: SidebarIconNames.plus, Icon: <AiOutlinePlus />, text: 'Add a server',
       onClick: () => setIsOpen(true)},
-    {name: SidebarIconNames.compass, Icon: FaCompass, text: 'Explore public servers'},
-    {name: SidebarIconNames.theme, Icon: darkTheme ? BsMoonFill : BsSunFill,
+    {name: SidebarIconNames.compass, Icon: <FaCompass />, text: 'Explore public servers'},
+    {name: SidebarIconNames.theme, Icon: darkTheme ? <BsMoonFill /> : <BsSunFill />,
       text: 'Change theme', onClick: () => setDarkTheme(!darkTheme)},
-    {name: SidebarIconNames.settings, Icon: BsGearFill, text: 'User settings'},
+    {name: SidebarIconNames.settings, Icon: <BsGearFill />, text: 'User settings'},
   ]
 
   const PopupOnClick = () => {
@@ -41,6 +43,11 @@ const Sidebar = () => {
         />
         {icon.name == SidebarIconNames.discord && <>
           <span className="dividing-line"></span>
+          {Servers.map(server =>
+            <SidebarIcon Icon={<div>{server[0]}</div>} name={server}
+              onClick={() => setChosen(server)} chosen={chosen === server}
+              key={server} />
+          )}
         </>}
       </React.Fragment>)}
       <Popup {...{isOpen, setIsOpen}} popupContent={{
