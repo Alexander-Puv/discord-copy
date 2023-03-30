@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { AiFillPlusCircle } from 'react-icons/ai'
 import {
   BsEmojiAngryFill,
@@ -21,6 +21,35 @@ const emoji = [<BsEmojiNeutralFill />, <BsEmojiLaughingFill />, <BsEmojiSmileFil
 const SendMessage = () => {
   const [chosenEmoji, setChosenEmoji] = useState(0)
   const {chosenChnl} = useChannelSidebarContext()
+  const [message, setMessage] = useState('')
+  const contentEditableRef = useRef<HTMLDivElement>(null)
+  const cursorPosition = useRef(0)
+
+  const handleInput = () => {
+    const element = contentEditableRef.current
+    const selection = window.getSelection()
+    if (element && selection) {
+      const range = selection.getRangeAt(0)
+      cursorPosition.current = range.startOffset
+      setMessage(element.innerHTML)
+    }
+  }
+
+  useEffect(() => {
+    // Restore cursor position after updating message state
+    const element = contentEditableRef.current
+    if (element) {
+      const range = document.createRange()
+      const selection = window.getSelection()
+      const childNode = element.childNodes[0] as HTMLElement
+      if (childNode) {
+        range.setStart(childNode, Math.min(cursorPosition.current, childNode.textContent?.length || 0))
+        range.collapse(true)
+        selection?.removeAllRanges()
+        selection?.addRange(range)
+      }
+    }
+  }, [message])
 
   const changeEmoji = () => {
     if (chosenEmoji === emoji.length - 1) {
@@ -43,14 +72,21 @@ const SendMessage = () => {
         </div>
         <div className="relative flex-1 min-h-[2.75rem]
           h3 font-normal leading-[1.375rem] cursor-text">
-          <div className="absolute left-0 py-[11px] pr-[10px] text-gray-500 text-opacity-40
+          {!message &&
+          <div className="absolute left-0 py-[11px] pr-[10px]
+            text-gray-500 text-opacity-40
             whitespace-nowrap overflow-ellipsis overflow-hidden">
-            Message #{chosenChnl.title}</div>
+            Message #{chosenChnl.title}</div>}
+          <div className="flex-1 py-[11px] pr-[10px] outline-none"
+            contentEditable onInput={handleInput}
+            dangerouslySetInnerHTML={{ __html: message }}
+            ref={contentEditableRef}></div>
         </div>
         <div className="flex">
           <div className="icon-parent px-2 py-1 h4-hover"><HiGif /></div>
           <div className="icon-parent px-2 py-1 h4-hover"><FaStickyNote /></div>
-          <div className="icon-parent px-2 py-1 h4-hover transition-all ease-in hover:scale-[1.14]" onMouseEnter={changeEmoji}>
+          <div className="icon-parent px-2 py-1 h4-hover transition-all ease-in
+            hover:scale-[1.14]" onMouseEnter={changeEmoji}>
             {emoji[chosenEmoji]}
           </div>
         </div>
