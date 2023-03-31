@@ -25,16 +25,6 @@ const SendMessage = () => {
   const contentEditableRef = useRef<HTMLDivElement>(null)
   const cursorPosition = useRef(0)
 
-  const handleInput = () => {
-    const element = contentEditableRef.current
-    const selection = window.getSelection()
-    if (element && selection) {
-      const range = selection.getRangeAt(0)
-      cursorPosition.current = range.startOffset
-      setMessage(element.innerHTML)
-    }
-  }
-
   useEffect(() => {
     // Restore cursor position after updating message state
     const element = contentEditableRef.current
@@ -51,6 +41,22 @@ const SendMessage = () => {
     }
   }, [message])
 
+  const handleInput = () => {
+    const element = contentEditableRef.current
+    const selection = window.getSelection()
+    if (element && selection) {
+      const range = selection.getRangeAt(0)
+      cursorPosition.current = range.startOffset
+      setMessage(element.innerHTML)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault()
+    }
+  }
+  
   const changeEmoji = () => {
     if (chosenEmoji === emoji.length - 1) {
       // if last emoji, set the first emoji
@@ -77,8 +83,9 @@ const SendMessage = () => {
             text-gray-500 text-opacity-40
             whitespace-nowrap overflow-ellipsis overflow-hidden">
             Message #{chosenChnl.title}</div>}
-          <div className="flex-1 py-[11px] pr-[10px] outline-none"
+          <div className="relative z-10 flex-1 py-[11px] pr-[10px] outline-none whitespace-pre-wrap"
             contentEditable onInput={handleInput}
+            onKeyDown={handleKeyDown}
             dangerouslySetInnerHTML={{ __html: message }}
             ref={contentEditableRef}></div>
         </div>
