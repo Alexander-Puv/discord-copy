@@ -83,7 +83,7 @@ const SendMessage = () => {
             text-gray-500 text-opacity-40
             whitespace-nowrap overflow-ellipsis overflow-hidden">
             Message #{chosenChnl.title}</div>}
-          <div className="relative z-10 flex-1 py-[11px] pr-[10px] outline-none whitespace-pre-wrap"
+          <div className="relative z-[9] flex-1 py-[11px] pr-[10px] outline-none whitespace-pre-wrap"
             contentEditable onInput={handleInput}
             onKeyDown={handleKeyDown}
             dangerouslySetInnerHTML={{ __html: message }}
