@@ -8,7 +8,7 @@ import Popup from '../UI/Popup/Popup'
 import UploadPhoto from '../UI/UploadPhoto'
 import SidebarIcon, { SidebarIconNames, SidebarIconProps } from './SidebarIcon'
 
-const Servers = ['New Server']
+const Servers = ['New Chat']
 
 const Sidebar = () => {
   const [darkTheme, setDarkTheme] = useDarkMode()
@@ -23,7 +23,6 @@ const Sidebar = () => {
     {name: SidebarIconNames.compass, Icon: <FaCompass />, text: 'Explore public servers'},
     {name: SidebarIconNames.theme, Icon: darkTheme ? <BsMoonFill /> : <BsSunFill />,
       text: 'Change theme', onClick: () => setDarkTheme(!darkTheme)},
-    {name: SidebarIconNames.settings, Icon: <BsGearFill />, text: 'User settings'},
   ]
 
   const PopupOnClick = () => {

@@ -89,7 +89,7 @@ const SendMessage = () => {
             dangerouslySetInnerHTML={{ __html: message }}
             ref={contentEditableRef}></div>
         </div>
-        <div className="flex">
+        <div className="flex -mr-[6px]">
           <div className="icon-parent px-2 py-1 h4-hover"><HiGif /></div>
           <div className="icon-parent px-2 py-1 h4-hover"><FaStickyNote /></div>
           <div className="icon-parent px-2 py-1 h4-hover transition-all ease-in

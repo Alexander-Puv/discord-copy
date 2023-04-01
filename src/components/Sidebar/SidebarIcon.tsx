@@ -4,8 +4,7 @@ export enum SidebarIconNames {
   discord = 'Discord',
   plus = 'Plus',
   compass = 'Compass',
-  theme = 'Theme',
-  settings = 'Settings'
+  theme = 'Theme'
 }
 
 export interface SidebarIconProps {
